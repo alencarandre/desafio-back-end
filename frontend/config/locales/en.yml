@@ -30,4 +30,10 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  welcome: Welcome to CNAB importer
+  select_what_you_want_to_do_in_the_main_menu: Select what you want to do in the main menu
+
+  menu:
+    home: Home
+    import: Import
+    report: Report
