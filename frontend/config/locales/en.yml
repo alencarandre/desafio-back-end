@@ -37,3 +37,18 @@ en:
     home: Home
     import: Import
     report: Report
+
+  cnab: CNAB
+  import: Import
+  imported_cnab_files: Imported CNAB files
+  import_new_cnab_file: Import new CNAB file
+
+  activerecord:
+    models:
+      cnab_file:
+        one: 'CNAB File'
+        other: 'CNAB Files'
+    attributes:
+      cnab_file:
+        created_at: 'Import time'
+        status: 'Status'
