@@ -1,0 +1,15 @@
+#!/bin/bash
+
+while ! curl $AWS_ENDPOINT; do
+  echo "Awaiting localstack up..."
+  sleep 5
+done
+echo "Localstack is up, yeh"
+
+echo "Creating bucket for save uploaded files"
+aws s3 ls --endpoint=$AWS_ENDPOINT | grep $AWS_BUCKET || \
+  aws s3api create-bucket --bucket $AWS_BUCKET --region $AWS_REGION --endpoint=$AWS_ENDPOINT
+
+echo "Creating queue for processing file"
+aws sqs list-queues --region $AWS_REGION --endpoint=$AWS_ENDPOINT | grep $PROCESSING_QUEUE || \
+  aws sqs create-queue --queue-name $PROCESSING_QUEUE --region $AWS_REGION --endpoint=$AWS_ENDPOINT

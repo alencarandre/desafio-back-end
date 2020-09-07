@@ -13,13 +13,20 @@ services:
     volumes:
       - '/tmp/localstack:/tmp/localstack'
 
+  postgres:
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
   frontend:
     build: ./frontend
     ports:
       - '3000:3000'
-    environment:
-      - RAILS_ENV=development
+    env_file: development.env
     volumes:
       - './frontend:/app'
     depends_on:
       - localstack
+      - postgres
