@@ -16,14 +16,11 @@ class Aws::Client
       region: self.region,
     )
   end
-  
+
   private
 
-  def credentials
-    {
-      access_key_id: self.access_key_id,
-      secret_access_key: self.secret_access_key,
-    }
+  def self.credentials
+    Aws::Credentials.new(self.access_key_id, self.secret_access_key)
   end
 
   def self.access_key_id
