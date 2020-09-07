@@ -30,3 +30,13 @@ services:
     depends_on:
       - localstack
       - postgres
+
+  processing-file:
+    build: ./processing-file
+    env_file: development.env
+    volumes:
+      - './processing-file:/app'
+    ports:
+      - '3001:3000'
+    depends_on:
+      - localstack
