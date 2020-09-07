@@ -4,4 +4,14 @@ rm -f /app/tmp/pids/server.pid
 
 bundle install --jobs=$(nproc)
 
+while ! curl $AWS_ENDPOINT; do
+  echo "Awaiting localstack up..."
+  sleep 5
+done
+echo "Localstack is up, yeh"
+
+echo "Creating queue for save data"
+aws sqs list-queues --region $AWS_REGION --endpoint=$AWS_ENDPOINT | grep $SAVE_DATA_QUEUE || \
+  aws sqs create-queue --queue-name $SAVE_DATA_QUEUE --region $AWS_REGION --endpoint=$AWS_ENDPOINT
+
 bundle exec rails s -b 0.0.0.0
