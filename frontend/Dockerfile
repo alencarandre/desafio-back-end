@@ -1,6 +1,15 @@
 FROM ruby:2.7.1-alpine
 
-RUN apk update && apk add bash build-base nodejs postgresql-dev tzdata yarn
+RUN apk update && apk add \
+  bash \
+  build-base \
+  nodejs \
+  postgresql-dev \
+  postgresql-client \
+  tzdata \
+  yarn \
+  aws-cli \
+  curl
 
 WORKDIR /app
 
@@ -10,4 +19,4 @@ RUN gem install bundler --no-document
 RUN bundle install --jobs $(nproc)
 RUN yarn install
 
-CMD rails server
+CMD bin/start
