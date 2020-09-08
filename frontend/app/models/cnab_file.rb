@@ -11,4 +11,8 @@ class CnabFile < ApplicationRecord
   def update_status_to_processing
     update(status: :processing)
   end
+
+  def update_status_to_completed
+    update(status: :completed)
+  end
 end
