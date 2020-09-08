@@ -1,7 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+TransactionType.where(id: 1).first_or_create!(
+  description: 'Debit',
+  operation: :incoming
+)
+TransactionType.where(id: 2).first_or_create!(
+  description: 'Boleto',
+  operation: :outgoing
+)
+TransactionType.where(id: 3).first_or_create!(
+  description: 'Financing',
+  operation: :outgoing
+)
+TransactionType.where(id: 4).first_or_create!(
+  description: 'Credit',
+  operation: :incoming
+)
+TransactionType.where(id: 5).first_or_create!(
+  description: 'Lending',
+  operation: :incoming
+)
+TransactionType.where(id: 6).first_or_create!(
+  description: 'Sales',
+  operation: :incoming
+)
+TransactionType.where(id: 7).first_or_create!(
+  description: 'TED',
+  operation: :incoming
+)
+TransactionType.where(id: 8).first_or_create!(
+  description: 'DOC',
+  operation: :incoming
+)
+TransactionType.where(id: 9).first_or_create!(
+  description: 'Rent',
+  operation: :outgoing
+)
