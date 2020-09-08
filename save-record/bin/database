@@ -1,0 +1,27 @@
+#!/bin/bash
+
+db_name=save_record_development
+db_user=$DATABASE_HOST
+db_host=$DATABASE_USER
+db_pass=$DATABASE_PASS
+
+while ! PGPASSWORD="$db_pass" psql -U $db_user -h $db_host -c "\q"; do
+  echo $db_host
+  echo "Awaiting postgres up..."
+  sleep 5
+done
+echo "Postgres is up, yeh"
+
+if ! PGPASSWORD="$db_pass" psql -h $db_host -U $db_user -c "\l" | grep $db_name; then
+  echo "Creating database"
+  bundle exec rails db:create
+
+  echo "Loading database schema"
+  bundle exec rails db:schema:load
+
+  echo "Loading seeds"
+  bundle exec rails db:seed
+fi
+
+echo "Runing migration"
+bundle exec rails db:migrate

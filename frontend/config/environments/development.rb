@@ -52,4 +52,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.active_storage.service = :development
+
+  config.hosts = nil
 end

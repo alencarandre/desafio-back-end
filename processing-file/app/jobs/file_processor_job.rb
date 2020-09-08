@@ -3,22 +3,23 @@ class FileProcessorJob < ApplicationJob
 
   def perform(processing_id: , key: )
     errors = []
+
     BucketReaderService.(key) do |line, position|
       errors += CnabService::Processor.(processing_id, line, position)
     end
 
-    notify_errors(errors) if errors.present?
+    notify_errors(processing_id, errors) if errors.present?
 
-    notify_finish
+    notify_finish(processing_id)
   end
 
   private
 
-  def notify_errors(errors)
+  def notify_errors(processing_id, errors)
     # TODO notify errors
   end
 
-  def notify_finish
-    # TODO notify finish
+  def notify_finish(processing_id)
+    CompleteNotifierService.(processing_id)
   end
 end

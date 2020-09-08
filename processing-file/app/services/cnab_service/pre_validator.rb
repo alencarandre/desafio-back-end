@@ -1,5 +1,5 @@
 class CnabService::PreValidator < ApplicationService
-  CNAB_POSITIONS = 81
+  CNAB_POSITIONS = 80
 
   def initialize(line, position)
     @line = line
@@ -14,7 +14,7 @@ class CnabService::PreValidator < ApplicationService
 
   def basic_validation
     if @line.size != CNAB_POSITIONS
-      return ["the line #{@position} must have #{CNAB_POSITIONS} positions"]
+      return ["the line #{@position} must have #{CNAB_POSITIONS} positions, found #{@line.size}"]
     end
 
     []
