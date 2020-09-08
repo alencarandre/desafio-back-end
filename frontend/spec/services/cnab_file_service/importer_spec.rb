@@ -6,8 +6,15 @@ RSpec.describe CnabFileService::Importer do
     fixture_file_upload(path, 'plain/text')
   end
   let(:params) do 
-    permitted_values = double(permit: { file: file })
+    cnab_file = { file: file }
+    permitted_values = double(permit: cnab_file )
     params = double(require: permitted_values)
+
+    allow(params)
+      .to receive(:[])
+      .with(:cnab_file)
+      .and_return(cnab_file)
+
     params
   end
 
