@@ -10,6 +10,6 @@ while ! curl $AWS_ENDPOINT; do
 done
 echo "Localstack is up, yeh"
 
-sleep 5
+bin/database
 
 bundle exec rails processing:polling

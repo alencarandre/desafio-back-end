@@ -10,7 +10,7 @@ namespace :processing do
       begin
         queue_processor_service.call
       rescue Exception => e
-        puts e.message  
+        puts e.message
         puts e.backtrace.inspect  
       end
     end
