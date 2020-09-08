@@ -39,10 +39,8 @@ ActiveRecord::Schema.define(version: 2020_09_08_025102) do
 
   create_table "stores", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "owner_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["owner_id"], name: "index_stores_on_owner_id"
   end
 
   create_table "transaction_types", id: :integer, default: nil, force: :cascade do |t|
@@ -55,5 +53,4 @@ ActiveRecord::Schema.define(version: 2020_09_08_025102) do
   add_foreign_key "movements", "owners"
   add_foreign_key "movements", "stores"
   add_foreign_key "movements", "transaction_types"
-  add_foreign_key "stores", "owners"
 end
