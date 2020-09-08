@@ -1,0 +1,15 @@
+#!/bin/bash
+
+rm -f /app/tmp/pids/server.pid
+
+bundle install --jobs=$(nproc)
+
+while ! curl $AWS_ENDPOINT; do
+  echo "Awaiting localstack up..."
+  sleep 5
+done
+echo "Localstack is up, yeh"
+
+sleep 5
+
+bundle exec rails processing:polling

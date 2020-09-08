@@ -47,3 +47,12 @@ services:
       - localstack
       - redis
 
+  save-record:
+    build: ./save-record
+    env_file: development.env
+    volumes:
+      - './save-record:/app'
+    ports:
+      - '3002:3000'
+    depends_on:
+      - localstack
