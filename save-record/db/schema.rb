@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_023914) do
+ActiveRecord::Schema.define(version: 2020_09_08_025102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "movements", force: :cascade do |t|
+    t.bigint "transaction_type_id", null: false
+    t.datetime "transaction_date", null: false
+    t.float "value", null: false
+    t.string "document", null: false
+    t.string "card", null: false
+    t.bigint "owner_id", null: false
+    t.bigint "store_id", null: false
+    t.string "transaction_hash", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_movements_on_owner_id"
+    t.index ["store_id"], name: "index_movements_on_store_id"
+    t.index ["transaction_type_id"], name: "index_movements_on_transaction_type_id"
+  end
 
   create_table "owners", force: :cascade do |t|
     t.string "name", null: false
@@ -36,5 +52,8 @@ ActiveRecord::Schema.define(version: 2020_09_08_023914) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "movements", "owners"
+  add_foreign_key "movements", "stores"
+  add_foreign_key "movements", "transaction_types"
   add_foreign_key "stores", "owners"
 end
