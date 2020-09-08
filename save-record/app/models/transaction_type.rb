@@ -1,7 +1,7 @@
 class TransactionType < ApplicationRecord
   extend Enumerize
 
-  enumerize :status, in: %i(incoming outgoing)
+  enumerize :operation, in: %i(incoming outgoing)
 
   validates :id,
     :operation,

@@ -81,5 +81,33 @@ RSpec.describe CnabProcessorService, type: :model do
         expect(Owner.where(name: cnab.owner)).to be_present
       end
     end
+
+    describe 'when operation type is incoming' do
+      it 'saves movement with positive value' do
+        cnab.transaction_type = FactoryBot.create(:transaction_type, operation: :incoming).id
+        cnab.value = 10
+
+        expect { described_class.(cnab) }
+          .to change { Movement.count }
+
+        movement = Movement.where(transaction_hash: cnab.transaction_hash).first
+
+        expect(movement.value).to eq(10.0)
+      end
+    end
+
+    describe 'when operation type is outgoing' do
+      it 'saves movement with negative value' do
+        cnab.transaction_type = FactoryBot.create(:transaction_type, operation: :outgoing).id
+        cnab.value = 10
+
+        expect { described_class.(cnab) }
+          .to change { Movement.count }
+
+        movement = Movement.where(transaction_hash: cnab.transaction_hash).first
+
+        expect(movement.value).to eq(-10.0)
+      end
+    end
   end
 end

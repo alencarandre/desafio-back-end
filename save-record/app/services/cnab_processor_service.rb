@@ -24,7 +24,7 @@ class CnabProcessorService < ApplicationService
       store: store,
       owner: owner,
       transaction_date: @cnab.datetime,
-      value: @cnab.value,
+      value: value,
       document: @cnab.document,
       card: @cnab.card,
       transaction_hash: @transaction_hash,
@@ -41,5 +41,13 @@ class CnabProcessorService < ApplicationService
 
   def owner
     @owner ||= Owner.where(name: @cnab.owner).first_or_create!
+  end
+
+  def value
+    if transaction_type.operation.outgoing?
+      @cnab.value * -1
+    else
+      @cnab.value
+    end
   end
 end
