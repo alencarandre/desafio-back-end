@@ -6,9 +6,15 @@ class Store < ApplicationRecord
   belongs_to :owner
   has_many :movements
 
-  scope :with_amount, -> do
-    select('stores.id, stores.name, SUM(movements.value) AS total_amount')
-    .joins(:movements)
-    .group('stores.id, stores.name')
+  scope :summary, -> do
+    select("
+      stores.id,
+      stores.name,
+      owners.name AS owner_name,
+      SUM(movements.value) AS total_amount
+    ").joins(:movements)
+    .joins(:owner)
+    .group('stores.id, stores.name, owners.name')
+    .order('stores.id')
   end
 end

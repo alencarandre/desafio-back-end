@@ -1,0 +1,1 @@
+json.array! @stores, :id, :name, :owner_name, :total_amount
