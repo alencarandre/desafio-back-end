@@ -5,5 +5,8 @@ Rails.application.routes.draw do
     patch :completed
   end
 
+  resources :stores, only: [:index] do
+  end
+
   root 'home#index'
 end

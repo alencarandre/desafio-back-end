@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-lg-12">
+    <table class="table table-stripped">
+      <tr>
+        <th><%= t(:name) %></th>
+        <th><%= t(:owner) %></th>
+        <th><%= t(:total_amount) %></th>
+        <th></th>
+      </tr>
+      <% @stores.each do |store| %>
+        <tr>
+          <td><%= store['name'] %></td>
+          <td><%= store['owner_name'] %></td>
+          <td><%= number_to_currency(store['total_amount'], precision: 2) %></td>
+          <td>
+            <%=
+              link_to '#' do
+                content_tag :i, '', class: 'fas fa-search' 
+              end
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
