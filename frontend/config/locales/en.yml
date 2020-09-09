@@ -36,12 +36,23 @@ en:
   menu:
     home: Home
     import: Import
-    report: Report
+    stores: Stores
 
   cnab: CNAB
   import: Import
   imported_cnab_files: Imported CNAB files
   import_new_cnab_file: Import new CNAB file
+  stores: Stores
+  name: Name
+  owner: Owner
+  total_amount: Total Amount
+  movements_for: Movements for %{store}
+  transaction_date: Date
+  transaction_description: Type
+  operation: Operation
+  document: Document
+  card: Card
+  value: Value
 
   activerecord:
     models:
