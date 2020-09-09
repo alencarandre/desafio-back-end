@@ -1,24 +1,5 @@
-# README
+# SAVE-RECORD
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Essa aplicação recebe registro a registro do arquivo parseado e armazena no banco de dados. Também provê mecanismos para consulta dos dados gravados.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Para executa-la, siga as instruções [aqui](https://github.com/alencarandre/desafio-back-end/blob/master/README.md)
