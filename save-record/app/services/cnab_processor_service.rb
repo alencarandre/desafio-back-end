@@ -36,7 +36,12 @@ class CnabProcessorService < ApplicationService
   end
 
   def store
-    @store ||= Store.where(name: @cnab.store).first_or_create!
+    @store ||= Store
+      .where(
+        name: @cnab.store,
+        owner: owner
+      )
+      .first_or_create!
   end
 
   def owner

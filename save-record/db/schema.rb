@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_025102) do
+ActiveRecord::Schema.define(version: 2020_09_09_004527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_09_08_025102) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "owner_id", null: false
+    t.index ["owner_id", "name"], name: "index_stores_on_owner_id_and_name", unique: true
   end
 
   create_table "transaction_types", id: :integer, default: nil, force: :cascade do |t|
@@ -53,4 +55,5 @@ ActiveRecord::Schema.define(version: 2020_09_08_025102) do
   add_foreign_key "movements", "owners"
   add_foreign_key "movements", "stores"
   add_foreign_key "movements", "transaction_types"
+  add_foreign_key "stores", "owners"
 end
