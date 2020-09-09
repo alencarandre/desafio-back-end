@@ -1,24 +1,5 @@
-# README
+# PROCESSING-FILE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Essa aplicação recebe o arquivo e faz parse e devidas validações, enviando as linhas válidas para salvar.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Para executa-la, siga as instruções [aqui](https://github.com/alencarandre/desafio-back-end/blob/master/README.md)
