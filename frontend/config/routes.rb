@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :stores, only: [:index] do
+    resources :movements, only: [:index]
   end
 
   root 'home#index'

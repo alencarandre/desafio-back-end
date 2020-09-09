@@ -46,6 +46,13 @@ en:
   name: Name
   owner: Owner
   total_amount: Total Amount
+  movements_for: Movements for %{store}
+  transaction_date: Date
+  transaction_description: Type
+  operation: Operation
+  document: Document
+  card: Card
+  value: Value
 
   activerecord:
     models:

@@ -6,6 +6,6 @@ class StoreService < ApplicationService
   private
 
   def client
-    SaveRecord::Client.new
+    @@client = SaveRecord::Client.new
   end
 end

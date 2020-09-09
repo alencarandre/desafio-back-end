@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-lg-12">
+    <table class="table table-stripped">
+      <tr>
+        <th><%= t(:transaction_date) %></th>
+        <th><%= t(:transaction_description) %></th>
+        <th><%= t(:operation) %></th>
+        <th><%= t(:document) %></th>
+        <th><%= t(:card) %></th>
+        <th><%= t(:value) %></th>
+      </tr>
+      <% @store['movements'].each do |movement| %>
+        <tr>
+          <td><%= l DateTime.parse(movement['transaction_date']) %></td>
+          <td><%= movement['transaction_description'] %></td>
+          <td><%= movement['operation'] %></td>
+          <td><%= movement['document'] %></td>
+          <td><%= movement['card'] %></td>
+          <td><%= number_to_currency(movement['value'], precision: 2) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

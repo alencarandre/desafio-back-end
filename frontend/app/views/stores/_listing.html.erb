@@ -14,7 +14,7 @@
           <td><%= number_to_currency(store['total_amount'], precision: 2) %></td>
           <td>
             <%=
-              link_to '#' do
+              link_to store_movements_path(store['id']) do
                 content_tag :i, '', class: 'fas fa-search' 
               end
             %>
