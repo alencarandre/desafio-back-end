@@ -12,5 +12,4 @@ class Movement < ApplicationRecord
   validates :transaction_hash,
     presence: true,
     uniqueness: true
-
 end
